@@ -1,35 +1,154 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
-
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { Text, View, StyleSheet} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TabLayout() {
-  const colorScheme = useColorScheme();
+
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-    </Tabs>
+    <>
+    <SafeAreaView>
+      <View style={styles.painel}>  
+        <Text style={styles.textoPainel}>Painel</Text>
+      </View>
+
+
+      <View style={styles.areaBotao}>
+
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            AC
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            +
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            -
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            *
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            /
+          </Text>
+        </View>
+
+      </View>
+
+      <View style={styles.areaBotao}>
+
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            7
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            8
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            9
+          </Text>
+        </View>
+
+      </View>
+
+      <View style={styles.areaBotao}>
+
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            4
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            5
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            6
+          </Text>
+        </View>
+        
+      </View>
+
+      <View style={styles.areaBotao}>
+
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            1
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            2
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            3
+          </Text>
+        </View>
+        
+      </View>
+
+      <View style={styles.areaBotao}>
+        
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            0
+          </Text>
+        </View><View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            .
+          </Text>
+        </View>
+        <View style={styles.botao}>
+          <Text style={styles.textoBotao}>
+            ⟵
+          </Text>
+        </View>
+        
+      </View>
+
+
+    </SafeAreaView>
+
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  textoPainel: {
+    color: 'white',
+    fontSize: 20,
+  },
+  painel:{
+    backgroundColor: 'gray',
+    height: 100,
+    marginTop: 50,
+    margin: 10,
+  },
+  areaBotao:{
+    flexDirection: 'row',
+  },
+  botao:{
+    backgroundColor: 'blue',
+    padding: 10,
+    borderRadius: 5,
+    margin: 10,
+  },
+  textoBotao:{
+    color: 'white',
+  }
+});
