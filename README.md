@@ -1,3 +1,16 @@
+
+Protótipo visual:
+
+![alt text](assets/images/prototipo.png)
+
+Levantamento de requisitos:
+   - Digitar qualquer número que desejar;
+   - Realizar operações matemáticas (soma, subtração, multiplicação, divisão);
+   - Mostrar o resultado correto no display;
+   - Ser necessário limpar o display interiro, ou apenas um dígito por vez
+
+
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
