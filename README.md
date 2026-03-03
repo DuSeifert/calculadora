@@ -1,14 +1,31 @@
 
-Protótipo visual:
+# Projeto - Calculadora React Native
 
-![alt text](assets/images/prototipo.png)
+Uma simples calculadora feita em React Native, utilizando a tecnologia fornecida pela [Expo](https://expo.dev).
 
-Levantamento de requisitos:
+## Levantamento de requisitos:
+
+1 - Funcionais:
    - Digitar números de 0 a 9;
    - Realizar operações matemáticas (soma, subtração, multiplicação, divisão);
    - Mostrar o resultado correto no display;
-   - Ser necessário limpar o display interiro, ou apenas um dígito por vez;
+   - Ser necessário limpar o display interiro, ou apenas um dígito por vez
 
+2 - Não-Funcionais:
+   - Usabilidade simples e intuitiva;
+   - Deve funcionar na web e pelos celulares android e iOS
+
+## Protótipo visual:
+
+![alt text](assets/images/prototipo.png)
+
+## Fluxo de funcionamento
+   1. Usuário digita um número;
+   2. Usuário seleciona o operador;
+   3. Usuário digita o segundo número;
+   4. Usuário pressiona o botão de "=";
+   5. Sistema calcula o resultado;
+   6. Resultado é exibido no display.
 
 
 # Welcome to your Expo app 👋
