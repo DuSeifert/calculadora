@@ -12,49 +12,66 @@ export default function TabLayout() {
   const [anterior, setAnterior] = useState("");
   const [operador, setOperador] = useState("");
   const [display, setDisplay] = useState(" ");
+  const [numero, setNumero] = useState(" ");
 
   const buttonPress = (num: string) => {
-    if (display == "0" || display == " ") {
+    if (display == "0" || display == "") {
       setDisplay(num.toString());
+      setNumero(num.toString());
     } else {
       setDisplay(display + num.toString());
+      setNumero(numero + num.toString());
     };
   }
 
   const buttonOP = (op: string) => {
-      setAnterior(display);
-      setDisplay(" ");
+      if (display !== "0" && display !== "") {
+        setDisplay(display + " " + op + " ");
+      }  
+
+      setAnterior(numero);
+      setNumero("");
       setOperador(op);
   }
 
   const buttonIgual = () => {
     let resultado: Double = 0;
+
     switch (operador) {
       case "+":
-        resultado = parseFloat(anterior) + parseFloat(display);
+        resultado = parseFloat(anterior) + parseFloat(numero);
         break;
       case "-":
-        resultado = parseFloat(anterior) - parseFloat(display);
+        resultado = parseFloat(anterior) - parseFloat(numero);
         break;
       case "*":
-        resultado = parseFloat(anterior) * parseFloat(display);
+        resultado = parseFloat(anterior) * parseFloat(numero);
         break;
       case "/":
-        resultado = parseFloat(anterior) / parseFloat(display);
+        resultado = (parseFloat(anterior) / parseFloat(numero)).toFixed(2) as unknown as Double;
         break;
     }
     setDisplay(resultado.toString());
+    setNumero(resultado.toString());
   }
   
+  const buttonsqrt = () => {
+    let resultado: Double = 0;
+    resultado = Math.sqrt(parseFloat(numero));
+    setDisplay(resultado.toFixed(2).toString());
+  }
+
   const buttonClear = () => {
     setValor("");
     setAnterior("");
     setOperador("");
-    setDisplay(" ");
+    setDisplay("");
+    setNumero("");
   }
 
   const backspace = () => {
     setDisplay(display.slice(0, -1));
+    setNumero(numero.slice(0, -1));
   }
 
   return (
@@ -70,8 +87,8 @@ export default function TabLayout() {
           <TouchableOpacity onPress = {() => buttonClear()} style={styles.botaoAC}>
             <Text style={styles.textoBotao}>AC</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.botaoOP}>
-            <Text style={styles.textoBotao}>%</Text>
+          <TouchableOpacity onPress = {() => buttonsqrt()} style={styles.botaoOP}>
+            <Text style={styles.textoBotao}>√</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress = {() => buttonOP("/")} style={styles.botaoOP}>
             <Text style={styles.textoBotao}>/</Text>
@@ -126,11 +143,8 @@ export default function TabLayout() {
         </View>
 
         <View style={styles.areaBotao}>
-          <TouchableOpacity onPress={() => buttonPress("0")} style={styles.botao}>
+          <TouchableOpacity onPress={() => buttonPress("0")} style={styles.botaoZero}>
             <Text style={styles.textoBotao}>0</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.botao}>
-            <Text style={styles.textoBotao}>.</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress = {() => backspace()}style={styles.botao}>
             <Text style={styles.textoBotao}>←</Text>
@@ -153,13 +167,13 @@ const styles = StyleSheet.create({
   },
   textoPainel: {
     color: "white",
-    fontSize: 20,
+    fontSize: 30,
     
   },
   painel: {
     backgroundColor: "darkslategrey",
-    height: 50,
-    marginTop: 50,
+    height: 100,
+    marginTop: 100,
     margin: 10,
     width: 260,
     borderRadius: 5,
@@ -177,20 +191,36 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     margin: 10,
     width: 50,
+    justifyContent: "center",
+    height: 50
+
+  },
+  botaoZero: {
+    width: 120,
+    backgroundColor: "dimgray",
+    padding: 10,
+    borderRadius: 5,
+    margin: 10,
+    justifyContent: "center",
+    height: 50
   },
   botaoAC: {
     backgroundColor: "blue",
     padding: 10,
+    justifyContent: "center",
     borderRadius: 5,
     margin: 10,
     width: 120,
+    height: 50
 
   },
   botaoOP: {
     backgroundColor: "green",
     padding: 10,
+    justifyContent: "center",
     borderRadius: 5,
     margin: 10,
+    height: 50,
     width: 50,
 
   },
@@ -198,13 +228,14 @@ const styles = StyleSheet.create({
     backgroundColor: "red",
     padding: 10,
     borderRadius: 5,
+    justifyContent: "center",
     margin: 10,
     width: 50,
-
+    height: 50
   },
   textoBotao: {
     color: "white",
-        textAlign: "center",
-
+    textAlign: "center",
+    fontSize: 20,
   },
 })
