@@ -4,10 +4,10 @@ Protótipo visual:
 ![alt text](assets/images/prototipo.png)
 
 Levantamento de requisitos:
-   - Digitar qualquer número que desejar;
+   - Digitar números de 0 a 9;
    - Realizar operações matemáticas (soma, subtração, multiplicação, divisão);
    - Mostrar o resultado correto no display;
-   - Ser necessário limpar o display interiro, ou apenas um dígito por vez
+   - Ser necessário limpar o display interiro, ou apenas um dígito por vez;
 
 
 
